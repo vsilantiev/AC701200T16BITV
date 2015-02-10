@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<BillOfMaterials Version="1" Minor="2">
+	<IPInstance name="v5sfifo_15x128">
+		<FileSets>
+			<FileSet generator="xmdf_to_bom">
+				<File name="fifo_generator_ug175.pdf" type="ignore" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="v5sfifo_15x128.ngc" type="ngc" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="v5sfifo_15x128.vhd" type="vhdl" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="v5sfifo_15x128.vho" type="vho" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="v5sfifo_15x128.xco" type="xco" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="v5sfifo_15x128_xmdf.tcl" type="ignore" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+			</FileSet>
+		</FileSets>
+	</IPInstance>
+</BillOfMaterials>
+

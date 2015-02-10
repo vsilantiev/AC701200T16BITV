@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.2 (64-bit)
+# SW Build 932637 on Wed Jun 11 13:08:52 MDT 2014
+# IP Build 924643 on Fri May 30 09:20:16 MDT 2014
+# Start of session at: Tue Feb 10 14:23:47 2015
+# Process ID: 7574
+# Log file: /home/vladimir/TESTDIFFAC/acprv16bit/acprv16bit.runs/fifonew_synth_1/fifonew.vds
+# Journal file: /home/vladimir/TESTDIFFAC/acprv16bit/acprv16bit.runs/fifonew_synth_1/vivado.jou
+#-----------------------------------------------------------
+source fifonew.tcl

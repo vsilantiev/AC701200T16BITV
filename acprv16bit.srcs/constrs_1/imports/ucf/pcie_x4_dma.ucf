@@ -1,0 +1,412 @@
+###############################################################################
+##-----------------------------------------------------------------------------
+##
+## (c) Copyright 2009-2010 Xilinx, Inc. All rights reserved.
+##
+## This file contains confidential and proprietary information
+## of Xilinx, Inc. and is protected under U.S. and
+## international copyright and other intellectual property
+## laws.
+##
+## DISCLAIMER
+## This disclaimer is not a license and does not grant any
+## rights to the materials distributed herewith. Except as
+## otherwise provided in a valid license issued to you by
+## Xilinx, and to the maximum extent permitted by applicable
+## law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
+## WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES
+## AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
+## BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
+## INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
+## (2) Xilinx shall not be liable (whether in contract or tort,
+## including negligence, or under any other theory of
+## liability) for any loss or damage of any kind or nature
+## related to, arising under or in connection with these
+## materials, including for any direct, or any indirect,
+## special, incidental, or consequential loss or damage
+## (including loss of data, profits, goodwill, or any type of
+## loss or damage suffered as a result of any action brought
+## by a third party) even if such damage or loss was
+## reasonably foreseeable or Xilinx had been advised of the
+## possibility of the same.
+##
+## CRITICAL APPLICATIONS
+## Xilinx products are not designed or intended to be fail-
+## safe, or for use in any application requiring fail-safe
+## performance, such as life-support or safety devices or
+## systems, Class III medical devices, nuclear facilities,
+## applications related to the deployment of airbags, or any
+## other applications that could lead to death, personal
+## injury, or severe property or environmental damage
+## (individually and collectively, "Critical
+## Applications"). Customer assumes the sole risk and
+## liability of any use of Xilinx products in Critical
+## Applications, subject only to applicable laws and
+## regulations governing limitations on product liability.
+##
+## THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
+## PART OF THIS FILE AT ALL TIMES.
+##
+##-----------------------------------------------------------------------------
+## Project    : V5-Block Plus for PCI Express
+## File       : xilinx_pci_exp_blk_plus_1_lane_ep_xc5vlx20t-ff323-1.ucf
+#
+# Use this file only with the device listed below.  Any other
+# combination is invalid.  Do not modify this file except in
+# regions designated for "User" constraints.
+#
+###############################################################################
+# Define Device, Package And Speed Grade
+###############################################################################
+
+CONFIG PART = xc7a200t-fbg484-1;
+
+
+###############################################################################
+# User Time Names / User Time Groups / Time Specs
+###############################################################################
+
+###############################################################################
+# User Physical Constraints
+###############################################################################
+
+
+###############################################################################
+# Pinout and Related I/O Constraints
+###############################################################################
+
+#
+# SYS reset (input) signal.  The sys_reset_n signal should be
+# obtained from the PCI Express interface if possible.  For
+# slot based form factors, a system reset signal is usually
+# present on the connector.  For cable based form factors, a
+# system reset signal may not be available.  In this case, the
+# system reset signal must be generated locally by some form of
+# supervisory circuit.  You may change the IOSTANDARD and LOC
+# to suit your requirements and VCCO voltage banking rules.
+#
+
+
+
+#
+# SYS clock 250 MHz (input) signal. The sys_clk_p and sys_clk_n
+# signals are the PCI Express reference clock. Virtex-5 GTP
+# Transceiver architecture requires the use of a dedicated clock
+# resources (FPGA input pins) associated with each GTP Transceiver Tile.
+# To use these pins an IBUFDS primitive (refclk_ibuf) is
+# instantiated in user's design.
+# Please refer to the Virtex-5 GTP Transceiver User Guide
+
+#
+# SYS reset (input) signal.  The sys_reset_n signal should be
+# obtained from the PCI Express interface if possible.  For
+# slot based form factors, a system reset signal is usually
+# present on the connector.  For cable based form factors, a
+# system reset signal may not be available.  In this case, the
+# system reset signal must be generated locally by some form of
+# supervisory circuit.  You may change the IOSTANDARD and LOC
+# to suit your requirements and VCCO voltage banking rules.
+#
+
+///NET "sys_reset1_n"      LOC = "U1"  |IOSTANDARD = LVCMOS33 |PULLUP |NODELAY |TIG;
+///NET "sys_reset2_n"      LOC = "R1"  |IOSTANDARD = LVCMOS33 |PULLUP |NODELAY |TIG;
+NET "sys_reset_n" NODELAY = "TRUE" | LOC = AA20 | CLOCK_DEDICATED_ROUTE = FALSE | TIG;
+NET "sys_reset_n" IOSTANDARD = LVCMOS33;
+
+#
+# SYS clock 100 MHz (input) signal. The sys_clk_p and sys_clk_n
+# signals are the PCI Express reference clock. Virtex-5 GTP
+# Transceiver architecture requires the use of a dedicated clock
+# resources (FPGA input pins) associated with each GTP Transceiver Tile.
+# To use these pins an IBUFDS primitive (refclk_ibuf) is
+# instantiated in user's design.
+# Please refer to the Virtex-5 GTP Transceiver User Guide
+# (UG196) for guidelines regarding clock resource selection.
+#
+
+///NET  "sys_clk_p"       LOC = "F6";//LOC = "J3"  ;
+///NET  "sys_clk_n"       LOC = "E6";//LOC = "J4"  ;
+///INST "refclk_ibuf"     DIFF_TERM = "TRUE" ;
+
+INST "refclk_ibuf" LOC = IBUFDS_GTE2_X0Y2;//X0Y3;
+//////////NET "sys_clk" LOC="W19";
+
+#
+# Transceiver instance placement.  This constraint selects the
+# transceivers to be used, which also dictates the pinout for the
+# transmit and receive differential pairs.  Please refer to the
+# Virtex-5 GTP Transceiver User Guide (UG196) for more
+# information.
+#
+# PCIe Lane 0
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[0].gt_wrapper_i/gtp_channel.gtpe2_channel_i" LOC = GTPE2_CHANNEL_X0Y7;
+# PCIe Lane 1
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[1].gt_wrapper_i/gtp_channel.gtpe2_channel_i" LOC = GTPE2_CHANNEL_X0Y6;
+# PCIe Lane 2
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[2].gt_wrapper_i/gtp_channel.gtpe2_channel_i" LOC = GTPE2_CHANNEL_X0Y5;
+# PCIe Lane 3
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[3].gt_wrapper_i/gtp_channel.gtpe2_channel_i" LOC = GTPE2_CHANNEL_X0Y4;
+
+# GTP Common Placement GOOD
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[0].pipe_quad.pipe_common.qpll_wrapper_i/gtp_common.gtpe2_common_i" LOC = GTPE2_COMMON_X0Y1;
+#
+# PCI Express Block placement. This constraint selects the PCI Express
+# Block to be used.
+#
+
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_block_i" LOC = PCIE_X0Y0;
+
+#
+# BlockRAM placement
+#
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_rx/brams[3].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X2Y46;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_rx/brams[2].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y47;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_rx/brams[1].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y46;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_rx/brams[0].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y45;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_tx/brams[0].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y44;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_tx/brams[1].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y43;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_tx/brams[2].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y42;
+INST "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_bram_top/pcie_brams_tx/brams[3].ram/use_tdp.ramb36/ramb_bl.ramb36_dp_bl.ram36_bl" LOC = RAMB36_X1Y41;
+
+# PCIe Lane 0
+///INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/SIO/.pcie_gt_wrapper_i/GTD[0].GT_i" LOC = GTP_DUAL_X0Y1;
+
+
+
+###############################################################################
+# Physical Constraints
+###############################################################################
+
+#
+# BlockRAM placement
+#
+
+//INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/pcie_mim_wrapper_i/bram_retry/generate_sdp.ram_sdp_inst"      LOC = RAMB36_X1Y4 ;
+//INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/pcie_mim_wrapper_i/bram_tl_tx/generate_tdp2[1].ram_tdp2_inst" LOC = RAMB36_X1Y3 ;
+//INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/pcie_mim_wrapper_i/bram_tl_rx/generate_tdp2[1].ram_tdp2_inst" LOC = RAMB36_X1Y2 ;
+//INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/pcie_mim_wrapper_i/bram_tl_tx/generate_tdp2[0].ram_tdp2_inst" LOC = RAMB36_X1Y1 ;
+//INST "make4Lanes.pcieCore/pcie_ep0/pcie_blk/pcie_mim_wrapper_i/bram_tl_rx/generate_tdp2[0].ram_tdp2_inst" LOC = RAMB36_X1Y0 ;
+
+
+###############################################################################
+# Timing Constraints
+###############################################################################
+
+#
+# Ignore timing on asynchronous signals.
+#
+  
+
+#
+# Timing requirements and related constraints.
+#
+
+///NET "sys_clk"                                      PERIOD = 10ns;
+
+
+//NET "make4Lanes.pcieCore/pcie_ep0/pcie_blk/SIO/.pcie_gt_wrapper_i/gt_refclk_out" TNM_NET = "MGTCLK" ;
+
+//TIMESPEC "TS_MGTCLK"  = PERIOD "MGTCLK" 100.00 MHz HIGH 50 % ;
+ 
+ 
+ 
+#  ADC   
+// 1
+
+
+#Net ADC<0> LOC = F18 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING  |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING ;  //D1_01
+#Net ADC<1> LOC = C16 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_23
+#Net ADC<2> LOC = E16 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_45
+#Net ADC<3> LOC = E15 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_67
+#Net ADC<4> LOC = F14 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_89
+#Net ADC<5> LOC = G16 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_1011
+#Net ADC<6> LOC = G14 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_1213
+#Net ADC<7> LOC = G15 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D1_1415
+#Net ADC<8> LOC = C17 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_01 
+#Net ADC<9> LOC = C18 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_23
+#Net ADC<10> LOC = D17 |OFFSET = IN -0.6 ns VALID 4.4 ns   BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_45
+#Net ADC<11> LOC = D18 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_67
+#Net ADC<12> LOC = E12 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_89
+##Net ADC<13> LOC = E17 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_1011
+#Net ADC<14> LOC = F16 |OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_1213
+#Net ADC<15> LOC = F17 |OFFSET = IN -0.6 ns VALID 4.4 ns BEFORE CLKFROMADC RISING|OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING;  //D2_1415
+
+#NET CLKFROMADC  CLOCK_DEDICATED_ROUTE=FALSE | LOC=F13 | IOSTANDARD = LVCMOS33 ;//| DRIVE = 16 | DIFF_TERM = "FALSE" ;
+
+#NET CLKFROMADC TNM_NET = CLKFROMADC;
+#TIMESPEC TS_CLKFROMADC = PERIOD CLKFROMADC 100.00 MHz HIGH 50 % ;
+
+
+#Net ADC<0> LOC = F18 ;//| SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33 ;// |OFFSET = IN 750 ps VALID .00 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<1> LOC = C16 ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.00 ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<2> LOC = E16 ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.00 ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<3> LOC = E15 ;//  | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<4> LOC = F14 ;// | SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.000 ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<5> LOC = G16 ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.000 ns BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<6> LOC = G14  ;//| SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33;//;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<7> LOC = G15  ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<8> LOC = C17 ;//| SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<9> LOC = C18   ;//| SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER CLKFROMADC | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.00  ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<10> LOC = D17  ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.000 ns    BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<11> LOC = D18  ;// | SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER CLKFROMADC  | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.000 ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<12> LOC = E12  ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<13> LOC = E17  ;//| SLEW=FAST  |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.000 ns  BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<14> LOC = F16 ;//| SLEW=FAST   |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC | IOSTANDARD=LVCMOS33;//|OFFSET = IN 0 ns VALID 4.000 ns   BEFORE CLKFROMADC RISING | DRIVE = 4;
+#Net ADC<15> LOC = F17  ;// | SLEW=FAST |  OFFSET = IN 0.7 ns AFTER  CLKFROMADC  | IOSTANDARD=LVCMOS33 ;//|OFFSET = IN 0 ns  VALID 4.00 ns BEFORE CLKFROMADC RISING | DRIVE = 4;
+
+
+
+#NET "ADC*" OFFSET = IN 0.5 ns VALID 5 ns BEFORE "adc0_clkp" RISING;
+#NET "ADC*" OFFSET = IN 0.5 ns VALID 5 ns BEFORE "adc0_clkp" FALLING;
+
+
+#NET ADC<*> OFFSET = IN 5 ns AFTER CLKFROMADC ;
+#NET ADC<*> OFFSET = IN 5 ns VALID 10 ns BEFORE CLKFROMADC FALLING;
+
+
+
+
+# 
+#NET ADC<*> OFFSET = IN -2450 ps VALID 5000 ps BEFORE CLKFROMADC RISING;
+#NET ADC<*> OFFSET = IN -2450 ps VALID 5000 ps BEFORE CLKFROMADC FALLING;
+
+#TIMEGRP GrpRiseAdcClockPos = RISING TS_CLKFROMADC;
+#TIMEGRP GrpFallAdcClockPos = FALLING TS_CLKFROMADC;
+
+#OFFSET = IN 2 ns VALID 4 ns BEFORE CLKFROMADC TIMEGRP GrpRiseAdcClockPos;
+#OFFSET = IN 2 ps VALID 4 ps BEFORE CLKFROMADC TIMEGRP GrpFallAdcClockPos;
+
+NET CLKFROMADC  CLOCK_DEDICATED_ROUTE=FALSE | LOC=W11 | IOSTANDARD = LVCMOS33;//V17 | IOSTANDARD = LVCMOS33;
+//2
+
+
+//A
+Net ADC<0> LOC = AB17;//N18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<1> LOC = AA16;//R17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<2> LOC = Y13;//T18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<3> LOC = AB16;//R16;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<4> LOC = AA15;//U18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<5> LOC = AB15;//T17;// |OFFSET = IN -1 ns VALID 4.000  BEFORE CLKFROMADC RISING;
+Net ADC<6> LOC = Y14;//V18;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<7> LOC = AA14;//V16;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<8> LOC = T15;//M11;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<9> LOC = T14;//R15;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<10> LOC = T16;//P15;// |OFFSET = IN -1 ns VALID 4.000     BEFORE CLKFROMADC RISING;
+Net ADC<11> LOC = W16;//P14;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<12> LOC = U16;//U14;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<13> LOC = W10;//N17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+Net ADC<14> LOC = U15;//N12;// |OFFSET = IN - ns VALID 4.000    BEFORE CLKFROMADC RISING;
+Net ADC<15> LOC = W12;//P18;// |OFFSET = IN -0.5 ns  VALID 4.000  BEFORE CLKFROMADC RISING;
+//B
+////Net ADC<16> LOC = Y8;//N18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<17> LOC = AA8;//R17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<18> LOC = AA6;//T18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<19> LOC = AB7;//R16;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<20> LOC = AB6;//U18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<21> LOC = AB5;//T17;// |OFFSET = IN -1 ns VALID 4.000  BEFORE CLKFROMADC RISING;
+////Net ADC<22> LOC = AA5;//V18;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<23> LOC = AB3;//V16;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<24> LOC = AB12;//M11;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<25> LOC = AA13;//R15;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<26> LOC = AA11;//P15;// |OFFSET = IN -1 ns VALID 4.000     BEFORE CLKFROMADC RISING;
+////Net ADC<27> LOC = AB11;//P14;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<28> LOC = AA10;//U14;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<29> LOC = AB10;//N17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<30> LOC = Y11;//N12;// |OFFSET = IN - ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<31> LOC = AB8;//P18;// |OFFSET = IN -0.5 ns  VALID 4.000  BEFORE CLKFROMADC RISING;
+//C
+////Net ADC<0> LOC = W1;//N18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<1> LOC = U1;//R17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<2> LOC = V3;//T18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<3> LOC = U1;//R16;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<4> LOC = T1;//U18;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<5> LOC = T3;//T17;// |OFFSET = IN -1 ns VALID 4.000  BEFORE CLKFROMADC RISING;
+////Net ADC<6> LOC = U2;//V18;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<7> LOC = R3;//V16;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<8> LOC = AA3;//M11;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<9> LOC = AB2;//R15;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<10> LOC = AB1;//P15;// |OFFSET = IN -1 ns VALID 4.000     BEFORE CLKFROMADC RISING;
+////Net ADC<11> LOC = AA1;//P14;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<12> LOC = Y2;//U14;// |OFFSET = IN -1 ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<13> LOC = Y1;//N17;// |OFFSET = IN -1 ns VALID 4.000   BEFORE CLKFROMADC RISING;
+////Net ADC<14> LOC = W2;//N12;// |OFFSET = IN - ns VALID 4.000    BEFORE CLKFROMADC RISING;
+////Net ADC<15> LOC = W4;//P18;// |OFFSET = IN -0.5 ns  VALID 4.000  BEFORE CLKFROMADC RISING;
+
+
+Net ADC<*> IOSTANDARD=LVCMOS33;// | SLEW=FAST  | DRIVE = 16  | DIFF_TERM = "FALSE" ;// | OFFSET = IN 1 ns  BEFORE CLKFROMADC RISING ;
+
+
+
+
+#Net ADC<*>  OFFSET = IN -0.6 ns VALID 4.4 ns  BEFORE CLKFROMADC FALLING ;
+
+
+
+
+//  1   
+NET CLK100MHZ CLOCK_DEDICATED_ROUTE=FALSE | DRIVE = 4 |  SLEW=FAST | LOC=W19 | IOSTANDARD = LVCMOS33;//V6 | IOSTANDARD = LVCMOS33;
+
+
+NET CLK100MHZ TNM_NET = CLK100MHZ; 
+TIMESPEC TS_CLK100MHZ = PERIOD CLK100MHZ 100.00 MHz HIGH 50 % ;
+
+//  1  CLK_B 
+NET ADCCLK CLOCK_DEDICATED_ROUTE=FALSE  | LOC=V4 | IOSTANDARD = LVCMOS33; //G13  | IOSTANDARD = LVCMOS33;
+//  2  CLK_A 
+NET ADCCLKOUT CLOCK_DEDICATED_ROUTE=FALSE | LOC=V13 | IOSTANDARD = LVCMOS33;//M14   | IOSTANDARD = LVCMOS33;
+
+
+
+#TIMESPEC CLKFROMADC = PERIOD CLK 10.0 ns HIGH 50%;
+#OFFSET = IN 1 ns VALID 2 ns BEFORE CLKFROMADC RISING;
+#OFFSET = IN 1 ns VALID 4 ns BEFORE CLKFROMADC FALLING;
+NET "sys_clk_c" TNM_NET = "SYSCLK";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/clk_125mhz" TNM_NET = "CLK_125";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/clk_250mhz" TNM_NET = "CLK_250";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/userclk1" TNM_NET = "CLK_USERCLK";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/userclk2" TNM_NET = "CLK_USERCLK2";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/userclk2" TIG;
+
+TIMESPEC TS_SYSCLK = PERIOD "SYSCLK" 100 MHz HIGH 50 %; 
+TIMESPEC TS_CLK_250 = PERIOD "CLK_250" TS_SYSCLK * 2.5 HIGH 50 % PRIORITY 1;
+TIMESPEC TS_CLK_125 = PERIOD "CLK_125" TS_SYSCLK * 1.25 HIGH 50 % PRIORITY 2;
+TIMESPEC TS_CLK_USERCLK = PERIOD "CLK_USERCLK" TS_SYSCLK * 2.5 HIGH 50 %;
+TIMESPEC TS_CLK_USERCLK2 = PERIOD "CLK_USERCLK2" TS_SYSCLK * 2.5 HIGH 50 %;
+
+INST "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/mmcm_i" LOC = MMCME2_ADV_X0Y2;
+
+PIN "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_block_i.PLPHYLNKUPN" TIG;
+PIN "make4Lanes.pcieCore/v7_pcie_i/pcie_top_i/pcie_7x_i/pcie_block_i.PLRECEIVEDHOTRST" TIG;
+
+PIN "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/mmcm_i.RST" TIG;
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/user_resetdone*" TIG;
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_clock_int.pipe_clock_i/pclk_sel" TIG;
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[0].gtp_pipe_rate.gtp_pipe_rate_i/*" TNM_NET =  FFS "MC_PIPE";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[1].gtp_pipe_rate.gtp_pipe_rate_i/*" TNM_NET =  FFS "MC_PIPE";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[2].gtp_pipe_rate.gtp_pipe_rate_i/*" TNM_NET =  FFS "MC_PIPE";
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/pipe_lane[3].gtp_pipe_rate.gtp_pipe_rate_i/*" TNM_NET =  FFS "MC_PIPE";
+
+TIMESPEC TS_PIPE_RATE = FROM "MC_PIPE" TS_CLK_USERCLK * 0.5;
+
+
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/gtp_pipe_reset.gtp_pipe_reset_i/pllreset" TIG;
+NET "make4Lanes.pcieCore/v7_pcie_i/gt_top_i/pipe_wrapper_i/qpll_reset.qpll_reset_i/*" TIG;
+
+
+
+
+#NET CLKFROMADC OFFSET = OUT 1 AFTER CLKFROMADCTEST | CLOCK_DEDICATED_ROUTE=FALSE ;
+
+////NET real_strobe_signal LOC = "T12" | IOSTANDARD = LVCMOS33;   
+#NET real_strobe_signal2 LOC = "T7" | IOSTANDARD = LVCMOS33;   
+////NET real_soa_signal LOC = "R11" | IOSTANDARD = LVCMOS33; 
+#NET real_soa_signal2 LOC = "R12" | IOSTANDARD = LVCMOS33; 
+
+
+
+/////Net leds<0> LOC = V1   ; //green only
+/////Net leds<1> LOC = V2  ; //dragon only
+/////Net leds<2> LOC = V3  ; //dragon only
+/////Net leds<3> LOC =  D8  ; //dragon only
+
+/////Net leds<*> IOSTANDARD=LVCMOS33;

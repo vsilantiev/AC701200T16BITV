@@ -1,0 +1,265 @@
+Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------
+| Tool Version : Vivado v.2014.2 (lin64) Build 932637 Wed Jun 11 13:08:52 MDT 2014
+| Date         : Tue Feb 10 14:23:41 2015
+| Host         : ubuntu running 64-bit Ubuntu 12.04.5 LTS
+| Command      : upgrade_ip
+| Device       : xc7a200tfbg484-1
+-----------------------------------------------------------------------------------
+
+Upgrade Log for IP 'fifonew'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of fifonew from xilinx.com:ip:fifo_generator:9.3 to xilinx.com:ip:fifo_generator:12.0 (Rev. 1)
+
+After upgrade, an IP may have parameter differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality.
+
+2. Warnings
+-----------
+
+WARNING: The upgraded user parameter set contained parameters that could not be mapped on to the upgraded IP. When checking the upgrade script, note that parameter names are case sensitive.
+
+
+3. Upgrade messages
+-------------------
+
+Renamed parameter AXI_Address_Width to ADDRESS_WIDTH
+WARNING: upgrade cannot rename parameter Interface_Type to INTERFACE_TYPE : a parameter called INTERFACE_TYPE already exists in fifo_generator_v12_0
+Added parameter DATA_WIDTH with value 64
+Added parameter PROTOCOL with value AXI3
+Removed parameter AXI_Data_Width
+Removed parameter AXI_Type
+Added parameter READ_WRITE_MODE with value READ_WRITE
+Removed parameter Enable_Read_Channel
+Removed parameter Enable_Write_Channel
+Added parameter TDATA_NUM_BYTES with value 0
+Removed parameter TDATA_Width
+Removed parameter Enable_TDATA
+WARNING: upgrade cannot rename parameter TSTRB_Width to TSTRB_WIDTH : a parameter called TSTRB_WIDTH already exists in fifo_generator_v12_0
+Added parameter HAS_TSTRB with value 0
+Set parameter TSTRB_WIDTH to value 8
+WARNING: upgrade cannot rename parameter TKEEP_Width to TKEEP_WIDTH : a parameter called TKEEP_WIDTH already exists in fifo_generator_v12_0
+Added parameter HAS_TKEEP with value 0
+Set parameter TKEEP_WIDTH to value 8
+Removed parameter Enable_TKEEP
+Added parameter HAS_ACLKEN with value 0
+Removed parameter Use_Clock_Enable
+WARNING: upgrade cannot rename parameter TID_Width to TID_WIDTH : a parameter called TID_WIDTH already exists in fifo_generator_v12_0
+Set parameter TID_WIDTH to value 0
+Removed parameter Enable_TID
+WARNING: upgrade cannot rename parameter TDEST_Width to TDEST_WIDTH : a parameter called TDEST_WIDTH already exists in fifo_generator_v12_0
+Set parameter TDEST_WIDTH to value 0
+Removed parameter Enable_TDEST
+WARNING: upgrade cannot rename parameter TUSER_Width to TUSER_WIDTH : a parameter called TUSER_WIDTH already exists in fifo_generator_v12_0
+Set parameter TUSER_WIDTH to value 0
+Removed parameter Enable_TUSER
+Set parameter AWUSER_Width to value 0
+Removed parameter Enable_AWUSER
+Set parameter WUSER_Width to value 0
+Removed parameter Enable_WUSER
+Set parameter BUSER_Width to value 0
+Removed parameter Enable_BUSER
+Set parameter ARUSER_Width to value 0
+Removed parameter Enable_ARUSER
+Set parameter RUSER_Width to value 0
+Removed parameter Enable_RUSER
+Added parameter asymmetric_port_width with value false
+Added parameter ecc_pipeline_reg with value false
+Added parameter dynamic_power_saving with value false
+
+4. Customization warnings
+-------------------------
+
+WARNING: Upgrade target IP does not have parameter ID for 'enable_tstrobe'
+
+WARNING: Attempt to set value '8' on disabled parameter 'TKEEP_WIDTH' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '8' on disabled parameter 'TSTRB_WIDTH' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '0' on disabled parameter 'HAS_TKEEP' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '0' on disabled parameter 'HAS_TSTRB' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '0' on disabled parameter 'TUSER_WIDTH' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '0' on disabled parameter 'HAS_ACLKEN' is ignored for 'fifonew'
+
+WARNING: Attempt to set value 'AXI3' on disabled parameter 'PROTOCOL' is ignored for 'fifonew'
+
+WARNING: Attempt to set value '4' on disabled parameter 'ID_WIDTH' is ignored for 'fifonew'
+
+
+5. Debug Commands
+-----------------
+
+  The following debug information can be passed to Vivado as Tcl commands,
+in order to validate or debug the output of the upgrade flow.
+  Please consult the warnings from the previous sections, and alter or remove
+the configuration parameter(s) which caused the warning; then execute the Tcl
+commands, and use the IP Customization GUI to verify the IP configuration.
+
+create_ip -vlnv xilinx.com:ip:fifo_generator:12.0 -user_name fifonew
+set_property -dict "\
+  CONFIG.Add_NGC_Constraint_AXI false \
+  CONFIG.Empty_Threshold_Assert_Value_wdch 1022 \
+  CONFIG.Register_Slice_Mode_wdch Fully_Registered \
+  CONFIG.Full_Threshold_Assert_Value_rach 1023 \
+  CONFIG.Input_Depth_rach 16 \
+  CONFIG.Programmable_Full_Type Single_Programmable_Full_Threshold_Constant \
+  CONFIG.Enable_TREADY true \
+  CONFIG.dynamic_power_saving false \
+  CONFIG.READ_WRITE_MODE READ_WRITE \
+  CONFIG.Empty_Threshold_Assert_Value_wach 1022 \
+  CONFIG.Inject_Sbit_Error_wrch false \
+  CONFIG.Register_Slice_Mode_wach Fully_Registered \
+  CONFIG.TUSER_WIDTH 0 \
+  CONFIG.Almost_Empty_Flag false \
+  CONFIG.FIFO_Application_Type_rdch Data_FIFO \
+  CONFIG.Input_Data_Width 72 \
+  CONFIG.Programmable_Empty_Type_rdch No_Programmable_Empty_Threshold \
+  CONFIG.Enable_Data_Counts_axis false \
+  CONFIG.FIFO_Application_Type_rach Data_FIFO \
+  CONFIG.Programmable_Empty_Type_rach No_Programmable_Empty_Threshold \
+  CONFIG.Write_Clock_Frequency 1 \
+  CONFIG.Full_Threshold_Assert_Value_axis 1023 \
+  CONFIG.Input_Depth_axis 1024 \
+  CONFIG.Data_Count false \
+  CONFIG.TDEST_WIDTH 0 \
+  CONFIG.Enable_ECC_wrch false \
+  CONFIG.Underflow_Flag false \
+  CONFIG.Enable_Data_Counts_wdch false \
+  CONFIG.Use_Dout_Reset true \
+  CONFIG.Almost_Full_Flag false \
+  CONFIG.Inject_Dbit_Error_wrch false \
+  CONFIG.Read_Data_Count true \
+  CONFIG.Programmable_Full_Type_wrch No_Programmable_Full_Threshold \
+  CONFIG.HAS_ACLKEN 0 \
+  CONFIG.Full_Threshold_Assert_Value_wdch 1023 \
+  CONFIG.Input_Depth_wdch 1024 \
+  CONFIG.Enable_Common_Overflow false \
+  CONFIG.TDATA_NUM_BYTES 0 \
+  CONFIG.Write_Data_Count_Width 13 \
+  CONFIG.wach_type FIFO \
+  CONFIG.Enable_Data_Counts_wach false \
+  CONFIG.FIFO_Application_Type_axis Data_FIFO \
+  CONFIG.Programmable_Empty_Type_axis No_Programmable_Empty_Threshold \
+  CONFIG.Underflow_Sense_AXI Active_High \
+  CONFIG.wrch_type FIFO \
+  CONFIG.Full_Threshold_Assert_Value_wach 1023 \
+  CONFIG.Input_Depth_wach 16 \
+  CONFIG.Underflow_Flag_AXI false \
+  CONFIG.Reset_Pin true \
+  CONFIG.FIFO_Implementation_rdch Common_Clock_Block_RAM \
+  CONFIG.Reset_Type Asynchronous_Reset \
+  CONFIG.FIFO_Application_Type_wdch Data_FIFO \
+  CONFIG.Programmable_Empty_Type_wdch No_Programmable_Empty_Threshold \
+  CONFIG.Overflow_Flag_AXI false \
+  CONFIG.FIFO_Implementation_rach Common_Clock_Block_RAM \
+  CONFIG.asymmetric_port_width false \
+  CONFIG.HAS_TSTRB 0 \
+  CONFIG.FIFO_Application_Type_wach Data_FIFO \
+  CONFIG.Programmable_Empty_Type_wach No_Programmable_Empty_Threshold \
+  CONFIG.rdch_type FIFO \
+  CONFIG.ecc_pipeline_reg false \
+  CONFIG.Inject_Sbit_Error_rdch false \
+  CONFIG.Overflow_Sense Active_High \
+  CONFIG.axis_type FIFO \
+  CONFIG.DATA_WIDTH 64 \
+  CONFIG.Component_Name fifonew \
+  CONFIG.Empty_Threshold_Assert_Value_wrch 1022 \
+  CONFIG.Register_Slice_Mode_wrch Fully_Registered \
+  CONFIG.HAS_TKEEP 0 \
+  CONFIG.Inject_Sbit_Error_rach false \
+  CONFIG.Enable_ECC false \
+  CONFIG.synchronization_stages_axi 2 \
+  CONFIG.FIFO_Implementation_axis Common_Clock_Block_RAM \
+  CONFIG.Overflow_Flag false \
+  CONFIG.Enable_ECC_rdch false \
+  CONFIG.Full_Flags_Reset_Value 0 \
+  CONFIG.Use_Extra_Logic false \
+  CONFIG.Inject_Dbit_Error_rdch false \
+  CONFIG.TID_WIDTH 0 \
+  CONFIG.Data_Count_Width 13 \
+  CONFIG.Clock_Enable_Type Slave_Interface_Clock_Enable \
+  CONFIG.Programmable_Full_Type_rdch No_Programmable_Full_Threshold \
+  CONFIG.Enable_ECC_rach false \
+  CONFIG.FIFO_Implementation_wdch Common_Clock_Block_RAM \
+  CONFIG.Disable_Timing_Violations_AXI false \
+  CONFIG.Inject_Sbit_Error_axis false \
+  CONFIG.Inject_Dbit_Error_rach false \
+  CONFIG.AWUSER_Width 0 \
+  CONFIG.Programmable_Full_Type_rach No_Programmable_Full_Threshold \
+  CONFIG.Disable_Timing_Violations false \
+  CONFIG.FIFO_Implementation_wach Common_Clock_Block_RAM \
+  CONFIG.ADDRESS_WIDTH 32 \
+  CONFIG.Enable_Data_Counts_wrch false \
+  CONFIG.Empty_Threshold_Negate_Value 3 \
+  CONFIG.Inject_Sbit_Error_wdch false \
+  CONFIG.Valid_Sense Active_High \
+  CONFIG.Performance_Options Standard_FIFO \
+  CONFIG.Enable_TLAST false \
+  CONFIG.wdch_type FIFO \
+  CONFIG.Full_Threshold_Assert_Value_wrch 1023 \
+  CONFIG.Input_Depth_wrch 16 \
+  CONFIG.Inject_Dbit_Error false \
+  CONFIG.Enable_Reset_Synchronization true \
+  CONFIG.Underflow_Sense Active_High \
+  CONFIG.Enable_ECC_axis false \
+  CONFIG.Output_Depth 8192 \
+  CONFIG.Inject_Sbit_Error_wach false \
+  CONFIG.Inject_Dbit_Error_axis false \
+  CONFIG.Full_Threshold_Negate_Value 8188 \
+  CONFIG.Programmable_Empty_Type Single_Programmable_Empty_Threshold_Constant \
+  CONFIG.Programmable_Full_Type_axis No_Programmable_Full_Threshold \
+  CONFIG.enable_read_pointer_increment_by2 false \
+  CONFIG.Enable_ECC_wdch false \
+  CONFIG.synchronization_stages 2 \
+  CONFIG.ARUSER_Width 0 \
+  CONFIG.PROTOCOL AXI3 \
+  CONFIG.Overflow_Sense_AXI Active_High \
+  CONFIG.FIFO_Application_Type_wrch Data_FIFO \
+  CONFIG.Programmable_Empty_Type_wrch No_Programmable_Empty_Threshold \
+  CONFIG.WUSER_Width 0 \
+  CONFIG.Inject_Dbit_Error_wdch false \
+  CONFIG.Empty_Threshold_Assert_Value_rdch 1022 \
+  CONFIG.Read_Clock_Frequency 1 \
+  CONFIG.Register_Slice_Mode_rdch Fully_Registered \
+  CONFIG.TKEEP_WIDTH 8 \
+  CONFIG.Fifo_Implementation Independent_Clocks_Block_RAM \
+  CONFIG.Programmable_Full_Type_wdch No_Programmable_Full_Threshold \
+  CONFIG.Enable_ECC_wach false \
+  CONFIG.Enable_Common_Underflow false \
+  CONFIG.Inject_Dbit_Error_wach false \
+  CONFIG.Empty_Threshold_Assert_Value_rach 1022 \
+  CONFIG.Register_Slice_Mode_rach Fully_Registered \
+  CONFIG.Programmable_Full_Type_wach No_Programmable_Full_Threshold \
+  CONFIG.TSTRB_WIDTH 8 \
+  CONFIG.Valid_Flag false \
+  CONFIG.Dout_Reset_Value 0 \
+  CONFIG.Write_Acknowledge_Sense Active_High \
+  CONFIG.Write_Acknowledge_Flag false \
+  CONFIG.BUSER_Width 0 \
+  CONFIG.Read_Data_Count_Width 13 \
+  CONFIG.Empty_Threshold_Assert_Value 2 \
+  CONFIG.Inject_Sbit_Error false \
+  CONFIG.RUSER_Width 0 \
+  CONFIG.Output_Data_Width 72 \
+  CONFIG.INTERFACE_TYPE Native \
+  CONFIG.Enable_Data_Counts_rdch false \
+  CONFIG.Empty_Threshold_Assert_Value_axis 1022 \
+  CONFIG.Register_Slice_Mode_axis Fully_Registered \
+  CONFIG.Clock_Type_AXI Common_Clock \
+  CONFIG.rach_type FIFO \
+  CONFIG.Write_Data_Count false \
+  CONFIG.FIFO_Implementation_wrch Common_Clock_Block_RAM \
+  CONFIG.Full_Threshold_Assert_Value 8189 \
+  CONFIG.Full_Threshold_Assert_Value_rdch 1023 \
+  CONFIG.ID_WIDTH 4 \
+  CONFIG.Input_Depth 8192 \
+  CONFIG.Input_Depth_rdch 1024 \
+  CONFIG.Use_Embedded_Registers false \
+  CONFIG.Enable_Data_Counts_rach false " [get_ips fifonew]
+
+

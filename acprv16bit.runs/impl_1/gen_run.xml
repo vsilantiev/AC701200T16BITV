@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1423576838">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="RDI-RDI" Name="v5pcieDMA.vdi"/>
+  <File Type="BG-DRC" Name="v5pcieDMA.drc"/>
+  <File Type="BG-BGN" Name="v5pcieDMA.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="v5pcieDMA.sysdef"/>
+  <File Type="BITSTR-MMI" Name="v5pcieDMA.mmi"/>
+  <File Type="BITSTR-BMM" Name="v5pcieDMA_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="v5pcieDMA.nky"/>
+  <File Type="BITSTR-RBT" Name="v5pcieDMA.rbt"/>
+  <File Type="BITSTR-MSK" Name="v5pcieDMA.msk"/>
+  <File Type="BG-BIN" Name="v5pcieDMA.bin"/>
+  <File Type="BG-BIT" Name="v5pcieDMA.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="v5pcieDMA_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="v5pcieDMA_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="v5pcieDMA_postroute_physopt.dcp"/>
+  <File Type="ROUTE-SIMILARITY" Name="v5pcieDMA_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="v5pcieDMA_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="v5pcieDMA_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="v5pcieDMA_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="v5pcieDMA_route_status.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="v5pcieDMA_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="v5pcieDMA_power_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="v5pcieDMA_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="v5pcieDMA_drc_routed.rpt"/>
+  <File Type="ROUTE-DCP" Name="v5pcieDMA_routed.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="v5pcieDMA_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="v5pcieDMA_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="v5pcieDMA_postplace_pwropt.dcp"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="v5pcieDMA_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="v5pcieDMA_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="v5pcieDMA_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="v5pcieDMA_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="v5pcieDMA_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="v5pcieDMA_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="v5pcieDMA_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="v5pcieDMA_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="v5pcieDMA_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="v5pcieDMA_pwropt.dcp"/>
+  <File Type="OPT-DRC" Name="v5pcieDMA_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="v5pcieDMA_opt.dcp"/>
+  <File Type="PA-TCL" Name="v5pcieDMA.tcl"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/cern1.git/pcie_x4_dma.xdc">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../cern1.git/pcie_x4_dma.xdc"/>
+        <Attr Name="ImportTime" Val="1423567218"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PIOPLANDIR/constrs_1/designprops.xml">
+      <FileInfo SFType="CompatPartsDb">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+      </FileInfo>
+    </File>
+    <File Path="$PIOPLANDIR/constrs_1/usercols.xml">
+      <FileInfo SFType="UserColsDb">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/cern1.git/pcie_x4_dma.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2014">
+      <Desc>Vivado Implementation Defaults</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="pcie_7x_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="v6_mBuf_128x72"/>
+  <BlockFileSet Type="BlockSrcs" Name="v6_sfifo_15x128"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifonew"/>
+</GenRun>

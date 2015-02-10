@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a200tfbg484-1" LaunchTime="1423576625">
+  <File Type="VDS-TIMING-PB" Name="v5pcieDMA_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="v5pcieDMA_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="v5pcieDMA.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="v5pcieDMA_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="v5pcieDMA_utilization_synth.rpt"/>
+  <File Type="RDS-RDS" Name="v5pcieDMA.vds"/>
+  <File Type="PA-TCL" Name="v5pcieDMA.tcl"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_1/synth_1.psg"/>
+  <File Type="VDS-HWDEF" Name="v5pcieDMA.hwdef"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/synth_1/sources.xml"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/pkg_dma.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/pkg_dma.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/FF_tagram64x36.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/FF_tagram64x36.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/DMA_FSM.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/DMA_FSM.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/DMA_Calculate.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/DMA_Calculate.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/Tx_Output_Arbitor.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/Tx_Output_Arbitor.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/tx_Mem_Reader.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/tx_Mem_Reader.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_usDMA_Channel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_usDMA_Channel.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_MWr_Channel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_MWr_Channel.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_MRd_Channel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_MRd_Channel.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_dsDMA_Channel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_dsDMA_Channel.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_CplD_Channel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_CplD_Channel.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/RxIn_Delays.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/RxIn_Delays.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/Interrupts.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/Interrupts.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/tx_Transact.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/tx_Transact.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/rx_Transact.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/rx_Transact.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/Registers.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/Registers.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/tlpControl.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/tlpControl.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/adc16bitac701/rtl/FIFO_Wrapper.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/rtl/FIFO_Wrapper.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/xise/clckinvert.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adc16bitac701/xise/clckinvert.vhd"/>
+        <Attr Name="ImportTime" Val="1423563359"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/cern.git/pcie_axi_trn_bridge.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../cernv1/cernv1.srcs/sources_1/imports/cern.git/pcie_axi_trn_bridge.vhd"/>
+        <Attr Name="ImportTime" Val="1423559421"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/support/pcie_7x_0_support.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../cernv1/cernv1.srcs/sources_1/imports/support/pcie_7x_0_support.vhd"/>
+        <Attr Name="ImportTime" Val="1423559348"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/support/pcie_7x_0_pipe_clock.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../cernv1/cernv1.srcs/sources_1/imports/support/pcie_7x_0_pipe_clock.v"/>
+        <Attr Name="ImportTime" Val="1423547574"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/rtl/v5pcieDMA.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../SERGLAST/AC70116bit/rtl/v5pcieDMA.vhd"/>
+        <Attr Name="ImportTime" Val="1421328047"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/xise/Emul.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../SERGLAST/AC70116bit/xise/Emul.v"/>
+        <Attr Name="ImportTime" Val="1421323409"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="v5pcieDMA"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/cern1.git/pcie_x4_dma.xdc">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../cern1.git/pcie_x4_dma.xdc"/>
+        <Attr Name="ImportTime" Val="1423567218"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PIOPLANDIR/constrs_1/designprops.xml">
+      <FileInfo SFType="CompatPartsDb">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+      </FileInfo>
+    </File>
+    <File Path="$PIOPLANDIR/constrs_1/usercols.xml">
+      <FileInfo SFType="UserColsDb">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/cern1.git/pcie_x4_dma.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2014">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="pcie_7x_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="v6_mBuf_128x72"/>
+  <BlockFileSet Type="BlockSrcs" Name="v6_sfifo_15x128"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifonew"/>
+</GenRun>

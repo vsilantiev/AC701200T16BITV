@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<BillOfMaterials Version="1" Minor="2">
+	<IPInstance name="mBuf_128x72">
+		<FileSets>
+			<FileSet generator="xmdf_to_bom">
+				<File name="fifo_generator_ug175.pdf" type="ignore" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="mBuf_128x72.ngc" type="ngc" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="mBuf_128x72.vhd" type="vhdl" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="mBuf_128x72.vho" type="vho" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="mBuf_128x72.xco" type="xco" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+				<File name="mBuf_128x72_xmdf.tcl" type="ignore" timestamp="Tue Feb 10 10:15:59 2015" checksum="0">
+				</File>
+			</FileSet>
+		</FileSets>
+	</IPInstance>
+</BillOfMaterials>
+
